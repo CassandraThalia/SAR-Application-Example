@@ -1,0 +1,94 @@
+﻿<Page
+    x:Class="SAR.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SAR"
+    xmlns:vm="using:SAR.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="80"/>
+            <RowDefinition Height="231*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="250"/>
+            <ColumnDefinition Width="1237*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel x:Name="roleButtonStackPanel" 
+                    Grid.Column="1" Grid.Row="0" 
+                    VerticalAlignment="Center" 
+                    Orientation='Horizontal' 
+                    HorizontalAlignment="Left" 
+                    Background="AliceBlue" 
+                    CornerRadius="20"
+                    Margin="20">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Width" Value="100"></Setter>
+                    <Setter Property="Height" Value="40"></Setter>
+                    <Setter Property="CornerRadius" Value="20"></Setter>
+                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                </Style>
+            </StackPanel.Resources>
+            <Button x:Name="teacherButton" Background="#10497E" Foreground="White"
+                    ToolTipService.ToolTip="View status of students in your courses"
+                    Click="teacherButton_Click">Instructor</Button>
+            <Button x:Name="advisorButton" Background="Transparent"
+                    ToolTipService.ToolTip="View status of your Advisees"
+                    Click="advisorButton_Click">Advisor</Button>
+        </StackPanel>
+
+        <StackPanel x:Name="searchBarStackPanel" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Orientation='Horizontal' HorizontalAlignment="Right">
+            <AutoSuggestBox x:Name="searchTextBox" Width="300" Margin="10"
+                            TextChanged="searchTextBox_TextChanged"
+                            SuggestionChosen="searchTextBox_SuggestionChosen"
+                            QuerySubmitted = "searchTextBox_QuerySubmitted"
+                            PlaceholderText="Type to start Student Search"
+                            ToolTipService.ToolTip="Search for a specific student by W number or Name"></AutoSuggestBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="CornerRadius" Value="10"></Setter>
+                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                    <Setter Property="BorderBrush" Value="Transparent"></Setter>
+                </Style>
+            </StackPanel.Resources>
+
+            <Viewbox>
+                <Image x:Name="Logo"></Image>
+            </Viewbox>
+
+            <Button x:Name="InitUploadButton" 
+                    Click="InitUploadButton_Click"
+                    Padding="10"
+                    Margin="0, 10, 0, 0"
+                    Content="Initial Upload"
+                    Background="DarkRed"
+                    FontSize="14"
+                    Foreground="White"
+                    Visibility="Collapsed"
+                    ToolTipService.ToolTip="Click to upload Academic information for the Current/Upcoming Semester"/>
+
+            <TextBlock TextAlignment="Center" Padding="0 20 0 0" FontSize="14" Text="Logged In As:"></TextBlock>
+            <TextBlock x:Name="UserName" TextAlignment="Center" FontWeight="Bold" Padding="0 0 0 20" FontSize="18"></TextBlock>
+            
+            <StackPanel x:Name="sideBar">
+                
+            </StackPanel>
+            
+        </StackPanel>
+
+        <Rectangle Grid.Row="1" Grid.Column="1" Fill="{StaticResource light-gray}">
+        </Rectangle>
+        
+        <ContentControl x:Name="mainDisplayFrame" Grid.Row="1" Grid.Column="1">
+        </ContentControl>
+    </Grid>
+</Page>

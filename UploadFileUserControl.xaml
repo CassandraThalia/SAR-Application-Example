@@ -1,0 +1,42 @@
+﻿<UserControl
+    x:Class="SAR.UploadFileUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SAR"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:SAR.ViewModels"
+    d:DesignHeight="220"
+    d:DesignWidth="500">
+
+
+    <Grid>
+        <StackPanel x:Name="uploadBox" 
+                        Background="White"
+                        CornerRadius="10"
+                        Padding="20"
+                        BorderBrush="Gray"
+                        BorderThickness="2" 
+                        Margin="0,0,0,-3">
+            <TextBlock Text="Upload CSV File" FontSize="24"></TextBlock>
+            <TextBlock Text="Please DO NOT change the file name after exporting from Brightspace" Foreground="Red" TextWrapping="Wrap"></TextBlock>
+
+            <Button x:Name="openFileButton" 
+                    Background="#10497E" 
+                    Foreground="White" 
+                    CornerRadius="5" 
+                    Padding="25 10 25 13" 
+                    Click="openFileButton_Click"
+                    HorizontalAlignment="Center"
+                    Margin="0 30 0 0"
+                    FontSize="18"
+                    ToolTipService.ToolTip="Click to select CSV file of Student Grade information you wish to upload">Open</Button>
+            
+            <CheckBox x:Name="finalGradesCheckBox" HorizontalAlignment="Right" HorizontalContentAlignment="Right" MinWidth="30"
+                      ToolTipService.ToolTip="Check if this is your last upload for the semester">
+                Final Grades
+            </CheckBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

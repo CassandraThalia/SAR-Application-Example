@@ -1,0 +1,64 @@
+﻿<UserControl
+    x:Class="SAR.AdvisorViewUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SAR"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:models="using:SAR.Models"
+    xmlns:vmodels="using:SAR.ViewModels"
+    mc:Ignorable="d">
+
+    <Grid>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="gray" Height="40" VerticalAlignment="Top">
+            <TextBlock Text= "W Number" Width="150" VerticalAlignment="Center" Padding="10 0 0 0" Foreground="White"/>
+            <TextBlock Text="First Name" Width="150" VerticalAlignment="Center" Padding="10 0 0 0" Foreground="White"/>
+            <TextBlock Text="Last Name" Width="150" VerticalAlignment="Center" Padding="10 0 0 0" Foreground="White"/>
+            <TextBlock Text="Unread Notes" Width="200" VerticalAlignment="Center" Padding="10 0 0 0" Foreground="White"/>
+        </StackPanel>
+
+
+        <ScrollViewer Margin="0 40 0 0" Padding="0 0 0 80" Background="White">
+            <ListView x:Name="AdvisorView" ContainerContentChanging="AdvisorView_ContainerContentChanging">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Margin" Value="0 5 0 0" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Student">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{x:Bind StudentID}" TextWrapping="Wrap" VerticalAlignment="Center"
+                                       ToolTipService.ToolTip="Student's W Number"/>
+                            <TextBlock Grid.Column="1" Text="{x:Bind StudentFName}" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="2" Text="{x:Bind StudentLName}" TextWrapping="Wrap" VerticalAlignment="Center"/>                            
+                            <TextBlock Grid.Column="3" Text="{x:Bind UnreadNotes}" TextWrapping="Wrap" VerticalAlignment="Center" FontWeight="ExtraBold" 
+                                       ToolTipService.ToolTip="Indicates if there have been any notes added to student since you last logged in to application"/>
+                            <Button Grid.Column="4"
+                                    CornerRadius="5"
+                                    Margin="8,0,0,0"
+                                    Width="120"
+                                    Background="{x:Bind ButtonBG}"
+                                    Foreground="{x:Bind ButtonFG}"
+                                    x:Name="ViewNotesButton"
+                                    Click="ViewNotesButton_Click"
+                                    Content="{x:Bind ButtonMsg}"></Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

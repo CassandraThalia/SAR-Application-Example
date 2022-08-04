@@ -1,0 +1,30 @@
+﻿<ContentDialog
+    x:Class="SAR.ContentDialogs.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SAR.ContentDialogs"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title=""
+    PrimaryButtonText="SIGN IN"
+    SecondaryButtonText="CANCEL"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    PrimaryButtonStyle="{StaticResource primaryButtonStyle}"
+    SecondaryButtonStyle="{StaticResource secondaryButtonStyle}" >
+
+    <StackPanel Margin="150,2,150,0">
+        <Image Source="/Assets/SAR_Logo-transparent.png" MaxWidth="296" MaxHeight="300"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="#FF3F95FF">WELCOME</TextBlock>
+        <TextBox x:Name="wNumLoginBox" 
+                 Margin="0,0,0,10" 
+                 PlaceholderText="Log in with your W number as W0000000"
+                 />
+        <PasswordBox x:Name="userPasswordBox" Margin="0,0,0,4" 
+                     PlaceholderText="Password"
+                     KeyUp="userPasswordBox_KeyUp"></PasswordBox>
+        <TextBlock x:Name="errMsg" HorizontalAlignment="Center" Margin="0,0,0,10" Foreground="red"></TextBlock>
+       
+    </StackPanel>
+</ContentDialog>
